@@ -573,103 +573,128 @@ nav {
 
 /* BLOGS SECTION */
 .blogs {
-  width: 90%;
-  background-color: var(--mainWhite);
-  margin-top: 3rem;
-  margin-left: 3.5%;
-  height: 370px;
-  position: relative; /* Set the position to relative to contain absolute positioned children */
+  padding: 10px 20px;
+  background: #f8f9fa;
+  text-align: center;
 }
 
 .blogs .heading {
-  color: var(--primaryBlack);
-  font-size: 30px;
-  font-family: "Oswald", sans-serif;
-  margin-bottom: 1rem; /* Add some margin to separate the heading from the cards */
-  text-align: center; /* Center the heading */
+  font-size: 1.8rem;
+  margin: 0 0 16px;
+  color: #1a1a1a;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
 }
-
+.blogs .heading::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 4px;
+  background: var(--primaryBlack);
+  border-radius: 2px;
+}
 .blogs-container {
-  display: flex;
-  justify-content: space-around;
-  width: 90%;
-  padding: 4px;
-  margin-left: -80px;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 40px;
 }
-
+.blog-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 .blog-card {
-  width: 300px;
-  background-color: var(--primaryBlack);
-  color: var(--mainWhite);
-  box-shadow: 0 0 10px 2px var(--primaryBlack);
-  position: absolute;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
 }
-
-/* Add styling for other elements as needed */
-.blog-card img {
-  max-width: 100%; /* Make sure the image doesn't exceed the card width */
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
 }
-
-.blog-card .blog-category {
-  background-color: var(--primaryBlack);
-  color: var(--mainWhite);
-  top: 8px;
-  right: 8px;
-  padding: 6px;
-  font-size: 14px;
-  font-family: "Roboto Mono", monospace;
-  border-radius: 4px;
-  position: absolute;
-}
-
-.blog-data {
+.blog-img {
   width: 100%;
-  background: var(--transparentClr);
-  color: var(--mainWhite);
-  padding: 10px;
-  bottom: 60px;
-  left: 0;
-  font-size: 10px;
-  font-family: "Roboto Mono", monospace;
-  display: flex;
-  justify-content: space-between;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.blog-card:hover .blog-img {
+  transform: scale(1.1);
+}
+.blog-category {
   position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--primaryBlack);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
-
-.blog-data .spacer {
-  background-color: var(--mainYellow);
-  width: 10px;
-  height: 10px;
-  transform: rotate(45deg);
+.blog-data {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 30px 0;
+  color: #777;
+  font-size: 0.95rem;
 }
-
+.spacer {
+  width: 12px;
+  height: 12px;
+  background: var(--mainYellow);
+  border-radius: 50%;
+}
 .blog-text {
-  padding: 0 10px;
+  padding: 15px 30px 30px;
 }
-@media screen and (max-width: 486px) {
-  .blogs {
-    min-height: 900px;
+.blog-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--primaryBlack);
+  margin: 0;
+}
+@media (max-width: 992px) {
+  #projects, .blogs {
+    padding: 80px 20px;
   }
-  .blogs-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-  }
-  .blogs {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0 12px 24px 12px;
-  }
-  .blog-card {
-    width: 250px;
-    box-shadow: none;
-    position: relative;
-    margin-bottom: 16px;
-  }
-  .blog-data {
-    bottom: 80px;
+
+  #projects h3, .blogs .heading {
+    font-size: 2.4rem;
   }
 }
+
+@media (max-width: 768px) {
+  .slide, .blogs-container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  #projects, .blogs {
+    padding: 60px 15px;
+  }
+
+  #projects h3, .blogs .heading {
+    font-size: 2.2rem;
+  }
+
+  .blog-img {
+    height: 200px;
+  }
+}
+
 /* FOOTER STYLING */
 .footer h3 {
   font-family: "Oswald", sans-serif;
