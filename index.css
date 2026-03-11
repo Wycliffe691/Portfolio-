@@ -31,131 +31,103 @@ a {
 }
 /* Default styles for larger screens */
 nav {
-  background-color: var(--mainWhite);
-  position: fixed;
-  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* subtle shadow */
+  position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 1000;
 }
-
 .nav-container {
-  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1px 2px;
   display: flex;
   justify-content: space-between;
-  background-color: var(--mainWhite);
-  padding: 10px 10px;
+  align-items: center;
 }
-.nav-container button {
-  display: none;
-}
-
-.nav-links ul li {
-  display: inline-block;
-  padding: 10px 10px;
-  font-size: 1.25rem;
-  font-family: "Roboto Mono", monospace;
-}
-
 .logo img {
-  min-width: 100px;
-  width: 200px;
-  margin-left: 2rem;
+  height: 50px; /* adjust logo size */
+  width: auto;
+  display: block;
 }
-
-/* Media query for smaller screens */
-/* Media query for screens up to 486px */
-@media screen and (max-width: 486px) {
-  .nav-container {
-    flex-direction: row;
-    /* align-items: center; */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+.nav-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px; /* space between links */
+}
+.nav-links li a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+.nav-links li a:hover,
+.nav-links li a.active { /* optional: for current page highlight */
+  color: var(--secondaryBlack); /* your primary blue from earlier sections */
+}
+.bar-icon {
+  display: none; /* hidden on desktop */
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 10px;
+}
+@media (max-width: 768px) { /* adjust breakpoint as needed – 768px is common for tablets/phones */
+  .bar-icon {
+    display: block; /* show hamburger on mobile */
   }
 
-  .nav-links ul {
-    display: none;
-  }
-
-  .nav-container button {
-    display: flex;
-    margin-top: 10px;
-    padding: 2px;
-    font-size: 25px;
-    height: fit-content;
-  }
-  .nav-links.active ul {
-    display: block;
-    height: fit-content;
+  .nav-links {
     position: absolute;
-    top: 5.5rem;
-    /* Adjust the top position as needed */
-    right: 0;
-    width: 13rem;
-    background-color: var(--mainWhite);
-    text-align: center;
-    color: var(--primaryBlack);
-    /* z-index: 3; */
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  .nav-links.active ul a {
-    color: var(--primaryBlack);
-  }
-  .nav-links.active a::after {
-    content: none;
-  }
-  .nav-container button:hover {
-    cursor: pointer;
-  }
-
-  .nav-links ul li {
-    display: block;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-
-  .logo img {
-    max-width: 75%;
-    margin: 10px 0;
-  }
-  /* Tighter nav padding on small screens */
-  .nav-container {
-    padding: 8px 10px;
-    align-items: center;
-  }
-  /* Make mobile dropdown full width for easier tapping */
-  .nav-links.active ul {
-    width: 100%;
+    top: 100%; /* right below nav bar */
     left: 0;
-    right: 0;
-    box-shadow: none;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-height: 0; /* hidden by default */
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
   }
-}
 
-/* Media query for screens from 487px to 768px */
-@media screen and (min-width: 487px) and (max-width: 768px) {
+  .nav-links.active {
+    max-height: 400px; /* enough for your 5 links – or use a large number like 1000px */
+    opacity: 1;
+  }
+
   .nav-links ul {
-    display: none;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
   }
 
-  .nav-container button {
-    display: flex;
-    margin-top: 10px;
-    padding: 2px;
-    font-size: 25px;
-    height: fit-content;
-  }
-
-  .nav-links button:hover {
-    cursor: pointer;
-  }
-
-  .nav-links ul li {
+  .nav-links li a {
     display: block;
-    margin-bottom: 10px;
-    text-align: center;
+    padding: 12px 0;
+    font-size: 1.2rem;
   }
 
-  .logo img {
-    max-width: 75%;
-    margin: 10px 0;
+  /* Optional: animate links sliding/fading in */
+  .nav-links.active ul li {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.5s forwards;
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 

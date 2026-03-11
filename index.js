@@ -73,13 +73,3 @@ function showSlides() {
 }
 showSlides();
 // Get the progress bar element
-var progressBar = document.querySelector(".progress-bar");
-
-// Function to update the progress bar
-function updateProgressBar(progress) {
-  progressBar.style.width = progress + "%";
-  progressBar.setAttribute("aria-valuenow", progress);
-}
-
-// Example usage: update the progress bar to 50%
-updateProgressBar(50);
